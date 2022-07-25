@@ -95,7 +95,7 @@ services:
 ```
 
 
-**exam.conf** and **nginx.conf** could be something like that
+**exam.conf** and **nginx.conf** could be something like that  (you have to update the server name)
 
 **exam.conf**
 
@@ -111,7 +111,7 @@ server {
     #access_log  /var/log/nginx/host.access.log  main;
 
     location /api {
-        proxy_pass http://correctexam-back-app:8080/api;
+        proxy_pass http://correctexam-back:8080/api;
         proxy_set_header Host $http_host;
 
     }
@@ -372,7 +372,7 @@ services:
 ```
 
 
-**exam.conf** and **nginx.conf** could be something like that
+**exam.conf** and **nginx.conf** could be something like that (you have to update the server name)
 
 **exam.conf**
 
@@ -381,7 +381,7 @@ services:
 server {
     listen       80;
     listen  [::]:80;
-    # server name to change based on your own domain name for doodle
+    # server name to change based on your own domain name for your front
     server_name  correctexam.barais.fr;
 
     #charset koi8-r;
