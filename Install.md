@@ -1,12 +1,12 @@
 
 
 # Build and deploy
+
 # AMD64
 
-## Build 
+## Build
 
-### Backend 
-
+###  Backend
 
 If you want to build it manually, you can just run the following command: 
 
@@ -26,7 +26,7 @@ The backend is built automatically using github action. You can have access to t
 ```
 
 
-### Front
+###  Front
 
 **Without docker**
 Just clone the project
@@ -247,10 +247,11 @@ services:
 
 Before building the frontend for your CDN, do not forget to update **webpack/environment.js** with your domain names. 
 
-## Build and deploy on raspberry PI
+
+##  Build and deploy on raspberry PI
 
 
-### Install support of cross compile on your machine
+###  Install support of cross compile on your machine
 
 
 ```bash 
@@ -260,7 +261,7 @@ docker run --rm -t arm64v8/ubuntu uname -m
 ```
 
 
-### Build the backend
+###  Build the backend
 
 Create a docker file for quarkus to cross compile on your machine for arm64
 
@@ -317,7 +318,7 @@ CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
 docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:arm64 .
 ```
 
-### Build the frontend
+###  Build the frontend
 
 ```bash
 git clone https://github.com/correctexam/corrigeExamFront
