@@ -509,9 +509,7 @@ http {
 
 # Create a release on docker hub
 
-Create your docker image for the different targeted architecture. 
-
-Next 
+Next for the front you can use dockerX or create your docker image for the different targeted architecture. 
 
 ```bash
 docker manifest create \
@@ -519,7 +517,11 @@ barais/correctexam-front:manifest-v1 \
 --amend barais/correctexam-front:manifest-amd64 \
 --amend barais/correctexam-front:manifest-arm64v8
 docker manifest push barais/correctexam-front:manifest-v1
+```
 
+For the back, create your docker image for the different targeted architecture. 
+
+```bash
 docker manifest create \
 barais/correctexam-back:manifest-v1 \
 --amend barais/correctexam-back:manifest-amd64 \
