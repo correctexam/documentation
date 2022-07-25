@@ -1,9 +1,6 @@
 
 
 # Build and deploy
-
-:toc:
-
 # AMD64
 
 ## Build 
