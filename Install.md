@@ -211,7 +211,7 @@ http {
 }
 ```
 
-## Deploy database and backend on your own infrastrcture and frontend on a CDN
+## Or Deploy database and backend on your own infrastrcture and frontend on a CDN
 
 If you want to deploy the database and the backend infrastrcture on your own infrastrcuture and deploy the frontend on the CDN. You must have to manage properly your CORS authorization within your CDN and withing your backend. If you use github page public site, Pages allows CORS (access-control-allow-origin header is set to *). For the backend, you can use the quarkus properties *-Dquarkus.http.cors=true -Dquarkus.http.cors.origins=https://correctexam.github.io -Dquarkus.http.cors.methods=GET,PUT,POST,DELETE,PATCH,OPTIONS* to manage your cors. Please update the docker-compose descriptor accordingly. 
 
@@ -248,10 +248,10 @@ services:
 Before building the frontend for your CDN, do not forget to update **webpack/environment.js** with your domain names. 
 
 
-##  Build and deploy on raspberry PI
+#  Build and deploy on raspberry PI (arm64)
 
 
-###  Install support of cross compile on your machine
+##  Install support of cross compile on your machine
 
 
 ```bash 
@@ -260,8 +260,9 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes # This st
 docker run --rm -t arm64v8/ubuntu uname -m 
 ```
 
+##  Build
 
-###  Build the backend
+### Build the backend
 
 Create a docker file for quarkus to cross compile on your machine for arm64
 
@@ -331,7 +332,7 @@ You will obtain a nginx with only the js, html and js. You have to mount the con
 
 
 
-### Deploy on your raspberry 4
+## Deploy on your raspberry 4
 
 You can push your built image on dockerhub (update docker image within the docker compose) and just deploy the docker compose on your own raspberry with the nginx configuration files.
 
