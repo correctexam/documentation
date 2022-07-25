@@ -14,15 +14,18 @@ If you want to build it manually, you can just run the following command:
 git clone https://github.com/correctexam/corrigeExamBack
 cd corrigeExamBack
 mvn -B package --file pom.xml -Pnative
-docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-bask .
+docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back .
+```
 
 
 
-The backend is built automatically using github action. You can have access to the backend image within [docker hub](https://hub.docker.com/repository/docker/barais/grade-scope-istic)
+The backend is also built automatically using github action. You can have access to the backend image within [docker hub](https://hub.docker.com/repository/docker/barais/grade-scope-istic)
 
+**OR** 
 
-# or 
-# quarkus build --native --no-tests -Dquarkus.native.container-build=true if you install the quarkus cli
+```bash
+#if you install the quarkus cli
+quarkus build --native --no-tests -Dquarkus.native.container-build=true  
 ```
 
 
@@ -30,6 +33,9 @@ The backend is built automatically using github action. You can have access to t
 
 **Without docker**
 Just clone the project
+
+:warning:update webpack/environment.js with your domain name.
+
 
 ```bash
 # require nodejs v16 you can install it using nvm (https://github.com/nvm-sh/nvm)
@@ -46,6 +52,9 @@ npm run webapp:build:prod
 
 To build the front, we provide a simple docker file. 
 
+:warning:update webpack/environment.js with your domain name.
+
+
 ```bash
 git clone https://github.com/correctexam/corrigeExamFront
 cd corrigeExamFront
@@ -57,7 +66,7 @@ You will obtain a nginx with only the js, html and js. You have to mount the con
 
 
 
-## Deploy everything on your own infrastrcture
+## Deploy everything on your own infrastructure
 
 
 
@@ -211,7 +220,7 @@ http {
 }
 ```
 
-## Or Deploy database and backend on your own infrastrcture and frontend on a CDN
+## Or Deploy the database and the backend on your own infrastrcture and the frontend on a CDN
 
 If you want to deploy the database and the backend infrastrcture on your own infrastrcuture and deploy the frontend on the CDN. You must have to manage properly your CORS authorization within your CDN and withing your backend. If you use github page public site, Pages allows CORS (access-control-allow-origin header is set to *). For the backend, you can use the quarkus properties *-Dquarkus.http.cors=true -Dquarkus.http.cors.origins=https://correctexam.github.io -Dquarkus.http.cors.methods=GET,PUT,POST,DELETE,PATCH,OPTIONS* to manage your cors. Please update the docker-compose descriptor accordingly. 
 
@@ -320,6 +329,11 @@ docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:arm6
 ```
 
 ###  Build the frontend
+
+Clone the frontend repository. 
+
+:warning:update webpack/environment.js with your domain name.
+
 
 ```bash
 git clone https://github.com/correctexam/corrigeExamFront
