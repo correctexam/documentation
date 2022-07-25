@@ -14,7 +14,7 @@ If you want to build it manually, you can just run the following command:
 git clone https://github.com/correctexam/corrigeExamBack
 cd corrigeExamBack
 mvn -B package --file pom.xml -Pnative
-docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back .
+docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back:manifest-amd64 --build-arg ARCH=amd64/  .
 ```
 
 
@@ -59,7 +59,10 @@ To build the front, we provide a simple docker file.
 git clone https://github.com/correctexam/corrigeExamFront
 cd corrigeExamFront
 # update webpack/environment.js with your domain name
-sudo docker build -f src/main/docker/Dockerfile -t barais/correctexam-front .
+sudo docker build -f src/main/docker/Dockerfile -t barais/correctexam-front:manifest-amd64 --build-arg ARCH=amd64/ .
+# OR 
+sudo docker buildx build  -f src/main/docker/Dockerfile --push --platform linux/arm64,linux/amd64  --tag barais/correctexam-front .
+
 ```
 
 You will obtain a nginx with only the js, html and js. You have to mount the configuration if you want to manage proxy to the backend routes. I would prefer to use bunkerized nginx for the routing. 
@@ -74,7 +77,7 @@ You will obtain a nginx with only the js, html and js. You have to mount the con
 version: '2'
 services:
   correctexam-back:
-    image: barais/correctexam-back
+    image: barais/correctexam-back:manifest-amd64
     volumes:
 # Path for 
       - /tmp/files:/tmp/files:rw 
@@ -95,7 +98,7 @@ services:
 #    ports:
 #      - 3308:3306
   front:
-    image: barais/correctexam-front
+    image: barais/correctexam-front:manifest-amd64
 #    ports:
 #      - 90:80
     volumes:
@@ -232,7 +235,7 @@ On top of that, you can configured bunkerized nginx to automatically setup your 
 version: '2'
 services:
   correctexam-back
-    image: barais/correctexam-back
+    image: barais/correctexam-back:manifest-amd64
     volumes:
 # Path for 
       - /tmp/files:/tmp/files:rw 
@@ -325,7 +328,7 @@ CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
 
 
 ```bash
-docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:arm64 .
+docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:manifest-arm64v8 --build-arg ARCH=arm64v8/ .
 ```
 
 ###  Build the frontend
@@ -339,7 +342,9 @@ Clone the frontend repository.
 git clone https://github.com/correctexam/corrigeExamFront
 cd corrigeExamFront
 # update webpack/environment.js with your domain name
-sudo docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-front:arm64 .
+sudo docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-front::manifest-arm64v8 --build-arg ARCH=arm64v8/ .
+# OR using buildx
+sudo docker buildx build  -f src/main/docker/Dockerfile --push --platform linux/arm64,linux/amd64  --tag barais/correctexam-front .
 ```
 
 You will obtain a nginx with only the js, html and js. You have to mount the configuration if you want to manage proxy to the backend routes. I would prefer to use bunkerized nginx for the routing. 
@@ -356,7 +361,7 @@ You can push your built image on dockerhub (update docker image within the docke
 version: '2'
 services:
   correctexam-back:
-    image: barais/correctexam-back:arm64
+    image: barais/correctexam-back::manifest-arm64v8
     volumes:
 # Path for 
       - /tmp/files:/tmp/files:rw 
@@ -366,7 +371,7 @@ services:
 # All quarkus configuration parameters (knobs) could be override through command line. You could also use different options to update the configuration parameters.  https://quarkus.io/guides/config-reference
     command: ./application -Dquarkus.http.host=0.0.0.0 -Dquarkus.datasource.username=root -Dquarkus.datasource.password='' -Dquarkus.datasource.jdbc.url=jdbc:mysql://correctexam-mysql:3306/correctexam?useUnicode=true&characterEncoding=utf8&useSSL=false -Dquarkus.http.cors=true -Dquarkus.http.cors.origins=https://correctexam.github.io -Dquarkus.http.cors.methods=GET,PUT,POST,DELETE,PATCH,OPTIONS -Dquarkus.http.cors.headers=accept,origin,authorization,content-type,x-requested-with -Dquarkus.http.cors.exposed-headers=Content-Disposition -Dquarkus.http.cors.access-control-max-age=24H -Dquarkus.mailer.from=olivier.barais@univ-rennes1.fr -Dquarkus.mailer.host=partage.univ-rennes1.fr -Dquarkus.mailer.port=587 -Dquarkus.mailer.ssl=false -Dquarkus.mailer.username=olivier.barais@univ-rennes1.fr -Dquarkus.mailer.password=TOCHANGE -Djhipster.mail.base-url=https://correctexam.github.io/corrigeExamFront
   correctexam-mysql:
-    image: mysql:8.0.20:12cf01a51f80
+    image: mysql:8.0.20
     volumes:
       - ./../resources/db/migration/:/docker-entrypoint-initdb.d
     environment:
@@ -377,7 +382,7 @@ services:
 #    ports:
 #      - 3308:3306
   front:
-    image: barais/correctexam-front
+    image: barais/correctexam-front:manifest-arm64v8
 #    ports:
 #      - 90:80
     volumes:
@@ -502,3 +507,23 @@ http {
 }
 ```
 
+# Create a release on docker hub
+
+Create your docker image for the different targeted architecture. 
+
+Next 
+
+```bash
+docker manifest create \
+barais/correctexam-front:manifest-v1 \
+--amend barais/correctexam-front:manifest-amd64 \
+--amend barais/correctexam-front:manifest-arm64v8
+docker manifest push barais/correctexam-front:manifest-v1
+
+docker manifest create \
+barais/correctexam-back:manifest-v1 \
+--amend barais/correctexam-back:manifest-amd64 \
+--amend barais/correctexam-back:manifest-arm64v8
+docker manifest push barais/correctexam-back:manifest-v1
+
+```
