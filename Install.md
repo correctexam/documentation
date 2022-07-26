@@ -1,6 +1,31 @@
 
 
-# Build and deploy
+
+
+# Build and deploy correctExam App
+
+# Table of Contents
+
+=================
+
+- [Build and deploy correctExam App](#build-and-deploy-correctexam-app)
+- [Table of Contents](#table-of-contents)
+- [AMD64](#amd64)
+  - [Build](#build)
+    - [Backend](#backend)
+    - [Front](#front)
+  - [Deploy everything on your own infrastructure](#deploy-everything-on-your-own-infrastructure)
+  - [Or Deploy the database and the backend on your own infrastrcture and the frontend on a CDN](#or-deploy-the-database-and-the-backend-on-your-own-infrastrcture-and-the-frontend-on-a-cdn)
+- [Build and deploy on raspberry PI (arm64)](#build-and-deploy-on-raspberry-pi-arm64)
+  - [Install support of cross compile on your machine](#install-support-of-cross-compile-on-your-machine)
+  - [Build](#build-1)
+    - [Build the backend](#build-the-backend)
+    - [Build the frontend](#build-the-frontend)
+  - [Deploy on your raspberry 4](#deploy-on-your-raspberry-4)
+- [Create a release on docker hub](#create-a-release-on-docker-hub)
+
+<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
+=================
 
 # AMD64
 
@@ -25,7 +50,10 @@ The backend is also built automatically using github action. You can have access
 
 ```bash
 #if you install the quarkus cli
+git clone https://github.com/correctexam/corrigeExamBack
+cd corrigeExamBack
 quarkus build --native --no-tests -Dquarkus.native.container-build=true  
+docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back:manifest-amd64 --build-arg ARCH=amd64/  .
 ```
 
 
@@ -318,7 +346,7 @@ RUN chown 1001 /work \
     && chown 1001:root /work
 #COPY --chown=1001:root target/*-runner /work/application
 # COPY --chown=1001:root ./src/main/resources/db/migration/ /work/migration
-COPY target/grade-scope-istic-1.0.0-SNAPSHOT-native-image-source-jar/*-runner /work/application
+COPY target/*-runner /work/application
 RUN chmod 775 /work
 EXPOSE 8080
 USER 1001
