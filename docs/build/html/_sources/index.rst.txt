@@ -10,6 +10,10 @@ Welcome to correctexam's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   faq.md
+
+
+
 
 
 Indices and tables
