@@ -1,20 +1,3 @@
-# Build and deploy correctExam App
-
-
-- [Build and deploy correctExam App](#build-and-deploy-correctexam-app)
-- [AMD64](#amd64)
-  - [Build](#build)
-    - [Backend](#backend)
-    - [Front](#front)
-  - [Deploy everything on your own infrastructure](#deploy-everything-on-your-own-infrastructure)
-  - [Or Deploy the database and the backend on your own infrastrcture and the frontend on a CDN](#or-deploy-the-database-and-the-backend-on-your-own-infrastrcture-and-the-frontend-on-a-cdn)
-- [Build and deploy on raspberry PI (arm64)](#build-and-deploy-on-raspberry-pi-arm64)
-  - [Install support of cross compile on your machine](#install-support-of-cross-compile-on-your-machine)
-  - [Build](#build-1)
-    - [Build the backend](#build-the-backend)
-    - [Build the frontend](#build-the-frontend)
-  - [Deploy on your raspberry 4](#deploy-on-your-raspberry-4)
-- [Create a release on docker hub](#create-a-release-on-docker-hub)
 
 # AMD64
 
@@ -129,7 +112,7 @@ services:
 **exam.conf**
 
 
-```txt
+```nginx
 server {
     listen       80;
     listen  [::]:80;
@@ -197,7 +180,7 @@ server {
 
 **nginx.conf**
 
-```txt
+```nginx
 user  nginx;
 worker_processes  auto;
 
@@ -275,7 +258,6 @@ services:
 ```
 
 Before building the frontend for your CDN, do not forget to update **webpack/environment.js** with your domain names. 
-
 
 #  Build and deploy on raspberry PI (arm64)
 
@@ -413,7 +395,7 @@ services:
 **exam.conf**
 
 
-```txt
+```nginx
 server {
     listen       80;
     listen  [::]:80;
@@ -481,7 +463,7 @@ server {
 
 **nginx.conf**
 
-```txt
+```nginx
 user  nginx;
 worker_processes  auto;
 

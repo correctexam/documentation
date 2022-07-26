@@ -8,9 +8,15 @@ Welcome to correctexam's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: How to:
 
    faq.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Build and Deploy:
+
+   Install.md
 
 
 

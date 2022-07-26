@@ -12,6 +12,12 @@ Welcome to correctexam's documentation!
 
    faq.md
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Build and Deploy:
+
+   Install.md
+
 
 
 
