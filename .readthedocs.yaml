@@ -9,7 +9,12 @@ build:
 sphinx:
   configuration: docs/source/conf.py
 
+formats:
+  - epub
+  - pdf
+
 # Explicitly set the version of Python and its requirements
 python:
   install:
     - requirements: docs/requirements.txt
+
