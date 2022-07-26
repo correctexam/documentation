@@ -1,15 +1,7 @@
-
-
-
-
 # Build and deploy correctExam App
 
-# Table of Contents
-
-=================
 
 - [Build and deploy correctExam App](#build-and-deploy-correctexam-app)
-- [Table of Contents](#table-of-contents)
 - [AMD64](#amd64)
   - [Build](#build)
     - [Backend](#backend)
@@ -23,9 +15,6 @@
     - [Build the frontend](#build-the-frontend)
   - [Deploy on your raspberry 4](#deploy-on-your-raspberry-4)
 - [Create a release on docker hub](#create-a-release-on-docker-hub)
-
-<!-- Created by https://github.com/ekalinin/github-markdown-toc -->
-=================
 
 # AMD64
 
