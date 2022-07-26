@@ -34,7 +34,7 @@ docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back:man
 **Without docker**
 Just clone the project
 
-:warning:update webpack/environment.js with your domain name.
+⚠️ update webpack/environment.js with your domain name.
 
 
 ```bash
@@ -52,7 +52,9 @@ npm run webapp:build:prod
 
 To build the front, we provide a simple docker file. 
 
-:warning:update webpack/environment.js with your domain name.
+
+
+⚠️ update webpack/environment.js with your domain name.
 
 
 ```bash
@@ -334,7 +336,7 @@ docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:mani
 
 Clone the frontend repository. 
 
-:warning:update webpack/environment.js with your domain name.
+⚠️ update webpack/environment.js with your domain name.
 
 
 ```bash
