@@ -7,8 +7,8 @@
 ```bash
 git clone https://github.com/correctexam/documentation/
 cd documentation/docs
-pip install -r requirements.txt
-make html &
+pip install -r ./requirements.txt
+make html
 cd build/html
 python -m SimpleHTTPServer 8080
 ```
