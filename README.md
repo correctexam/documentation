@@ -1,6 +1,6 @@
 # Content
 
-Read the doc repository for [correctExam](https://correctexam.github.io/) project. 
+[Read the doc](https://correctexam.readthedocs.io/) repository for [correctExam](https://correctexam.github.io/) project. 
 
 # To run it locally
 
