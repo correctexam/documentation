@@ -65,7 +65,13 @@ These types of questions will be enriched in the future. Please provide your gre
 
 Honestly, not recommended because not tested. 
 
+### How to clean the students' scan if pages are missing, duplicate page, flipped page...?
 
+Use [pdfarranger](https://github.com/pdfarranger/pdfarranger). It is great tool for this task. 
+
+### Can I reload a clean scan (see previous question) and realign it if I already start to correct an exam?
+
+Yes, no problem, if you share the correction with colleagues or with different devices, you can force the upload and download to the server later. 
 ### Can I host an instance of this application on my own infrastructure?
 
 Yes please go to the documentation for developers. We provide scripts to deploy this application on any type of infrastructure from a powerful server with K8S to a raspberry 4. 
