@@ -72,6 +72,11 @@ Use [pdfarranger](https://github.com/pdfarranger/pdfarranger). It is great tool 
 ### Can I reload a clean scan (see previous question) and realign it if I already start to correct an exam?
 
 Yes, no problem, if you share the correction with colleagues or with different devices, you can force the upload and download to the server later. 
+
+### What happens if my template has an odd number of pages (*e.g.* 3 pages) and the scan of the student sheets is a multiple of 2 (*e.g.* 4 page per student)
+
+For the moment, it is not managed correctly at the moment of the alignment. It will be necessary to remove the blank pages from the student scans beforehand with pdf manipulation tools like [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) or [pdfarranger](https://github.com/pdfarranger/pdfarranger).
+
 ### Can I host an instance of this application on my own infrastructure?
 
 Yes please go to the documentation for developers. We provide scripts to deploy this application on any type of infrastructure from a powerful server with K8S to a raspberry 4. 
