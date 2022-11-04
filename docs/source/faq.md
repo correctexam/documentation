@@ -77,14 +77,41 @@ Yes, no problem, if you share the correction with colleagues or with different d
 
 For the moment, it is not managed correctly at the moment of the alignment. It will be necessary to remove the blank pages from the student scans beforehand with pdf manipulation tools like [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) or [pdfarranger](https://github.com/pdfarranger/pdfarranger).
 
-### Can I host an instance of this application on my own infrastructure?
+### Can I test an instance of this application on my own infrastructure/laptop (I want to keep my data private) ?
 
 Yes please go to the documentation for developers. We provide scripts to deploy this application on any type of infrastructure from a powerful server with K8S to a raspberry 4. 
+
+You can also easily test it locally. You just need docker. 
+
+```bash
+git clone -b develop https://github.com/correctexam/corrigeExamBack
+cd corrigeExamBack/src/main/docker
+docker-compose -f app.yml build --no-cache  back front
+docker-compose -f app.yml up
+```
+
+the application is then available on [http://localhost:9000](http://localhost:9000)
+the phpmyadmin part is available on [http://localhost:91](http://localhost:91)
+the fake mail server part is available on [http://localhost:9000/maildev/](http://localhost:9000/maildev/)
+
+For information: 
+
+1. If you want to connect to a real mail server type share. you can have an overview of the quarkus properties as a comment in the *app.yaml* file. 
+
+2. If you want to change the ports
+- for phpadmin,
+  - for the host port you have to change it in the *app.yml* file  
+  - for the internal port, you have to change it both in the *app.yml* file and the *myadmin.conf* file (nginx container file)
+- for the application
+  - for the host port, you have to change it in the app.yml but also in the file https://github.com/correctexam/corrigeExamFront/blob/main/webpack/environment.js as I make a git clone at the creation of the image you have to make a branch if you want to change it.
+  - for the internal port, you have to change it in the app.yml and in the exam.conf file (file of the nginx container) for the front and update the quarkus properties if you want to change the internal port of the back (no real reason)
+
+3. If you want to set up reverse proxy according to a domain name, everything will happen in the files *exam.conf* and *myadmin.conf* but there is also to update the external url in the application, it's a quarkus property in the app.yml file but also here for the front https://github.com/correctexam/corrigeExamFront/blob/main/webpack/environment.js
 
 
 ### How do I scan students' sheets?
 
-We recommend using grayscale at 200 DPI to keep the file size reasonable but no problem with a color scan at 300 DPI if necessary. Avoid pure black and white which could be detrimental to the algo that recognizes names/first names/ids (INE) of students
+We recommend using grayscale at 150 DPI to keep the file size reasonable but no problem with a color scan at 300 DPI if necessary. Avoid pure black and white which could be detrimental to the algo that recognizes names/first names/ids (INE) of students
 
 
 

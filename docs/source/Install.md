@@ -225,7 +225,7 @@ http {
 }
 ```
 
-## Or Deploy the database and the backend on your own infrastrcture and the frontend on a CDN
+## Or Deploy the database and the backend on your own infrastructure and the frontend on a CDN
 
 If you want to deploy the database and the backend infrastrcture on your own infrastrcuture and deploy the frontend on the CDN. You must have to manage properly your CORS authorization within your CDN and withing your backend. If you use github page public site, Pages allows CORS (access-control-allow-origin header is set to *). For the backend, you can use the quarkus properties *-Dquarkus.http.cors=true -Dquarkus.http.cors.origins=https://correctexam.github.io -Dquarkus.http.cors.methods=GET,PUT,POST,DELETE,PATCH,OPTIONS* to manage your cors. Please update the docker-compose descriptor accordingly. 
 
