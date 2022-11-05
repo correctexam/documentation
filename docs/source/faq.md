@@ -94,19 +94,20 @@ the application is then available on [http://localhost:9000](http://localhost:90
 the phpmyadmin part is available on [http://localhost:91](http://localhost:91)
 the fake mail server part is available on [http://localhost:9000/maildev/](http://localhost:9000/maildev/)
 
-For information: 
+For information:
 
-1. If you want to connect to a real mail server type share. you can have an overview of the quarkus properties as a comment in the *app.yaml* file. 
+1. If you want to connect to a real mail server type share. you can have an overview of the quarkus properties as a comment in the *app.yaml* file.
 
 2. If you want to change the ports
+  
 - for phpadmin,
   - for the host port you have to change it in the *app.yml* file  
   - for the internal port, you have to change it both in the *app.yml* file and the *myadmin.conf* file (nginx container file)
 - for the application
-  - for the host port, you have to change it in the app.yml but also in the file https://github.com/correctexam/corrigeExamFront/blob/main/webpack/environment.js as I make a git clone at the creation of the image you have to make a branch if you want to change it.
+  - for the host port, you have to change it in the app.yml.
   - for the internal port, you have to change it in the app.yml and in the exam.conf file (file of the nginx container) for the front and update the quarkus properties if you want to change the internal port of the back (no real reason)
 
-3. If you want to set up reverse proxy according to a domain name, everything will happen in the files *exam.conf* and *myadmin.conf* but there is also to update the external url in the application, it's a quarkus property in the app.yml file but also here for the front https://github.com/correctexam/corrigeExamFront/blob/main/webpack/environment.js
+1. If you want to set up reverse proxy according to a domain name, everything will happen in the files *exam.conf* and *myadmin.conf* but there is also to update the external url in the application, it's a quarkus property in the app.yml file. 
 
 
 ### How do I scan students' sheets?
