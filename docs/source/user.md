@@ -67,7 +67,8 @@ For the moment, there are roughly four types of question.
 
 
 :::{note}
-Comments associated with a question can be defined here or during correction in the correction view.:::
+Comments associated with a question can be defined here or during correction in the correction view.
+:::
 
 
 #### How the scoring system works with different question types
