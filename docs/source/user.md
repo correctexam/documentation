@@ -1,11 +1,6 @@
 (user1)=
-# User manual
 
-## Demo
-
-A demonstration video is available [here](https://www.youtube.com/watch?v=bYTBlTg37RM&t) in French.
-
-## The main stages to achieve to evaluate an exam
+# The main stages to achieve to evaluate an exam
 
 The main stages of exam marking are as follows
 
@@ -20,8 +15,12 @@ The main stages of exam marking are as follows
 8. Send feedback to students
 9. Export grades in excel format for transmission to school department
 
+## Demo
 
-### Step 0: How do I create an account on the platform?
+A demonstration video is available [here](https://www.youtube.com/watch?v=bYTBlTg37RM&t) in French.
+
+
+## Step 0: How do I create an account on the platform?
 
 You can go to the [platform](https://correctexam.github.io/corrigeExamFront/), click on **register**, fill in a few details. You will receive an e-mail to validate your account.
 
@@ -30,7 +29,7 @@ You can go to the [platform](https://correctexam.github.io/corrigeExamFront/), c
 
 You can then fill in your account information in the menu. *Account* -> *Settings* menu
 
-### Step 1: Create your course and exam (This includes creating your exam using a word processor (word, google doc, libreoffice) or latex ;)
+## Step 1: Create your course and exam (This includes creating your exam using a word processor (word, google doc, libreoffice) or latex ;)
 
 
 Once logged in, on the home page, click on the **+** symbol *create a course*.
@@ -50,13 +49,13 @@ For Univ Rennes, this list is available here: https://mdw.univ-rennes1.fr/
 :::
 
 
-### Step 2: Create your grading scale (how each question will be graded, typical comments per question, etc.)
+## Step 2: Create your grading scale (how each question will be graded, typical comments per question, etc.)
 
 To create your marking scheme, once you've entered the page for a module, then for the exam in question, you have access to an annotate template button. This is where you define all the zones of interest, as well as the scale for each question. 
 You need zones of interest with last name, first name and/or student number. 
 You also need zones of interest that define the areas in which the student will answer each of the questions asked. 
 
-#### Understanding the different question types
+### Understanding the different question types
 
 
 For the moment, there are roughly four types of question. 
@@ -72,7 +71,7 @@ Comments associated with a question can be defined here or during correction in 
 :::
 
 
-#### How the scoring system works with different question types
+### How the scoring system works with different question types
 
 For each question, you'll need to define the question number, the total number of points and a notion of *steps*. The question number can be the same for several questions (if, for example, the answer zone is located on two separate pages). The number of points corresponds to the maximum score for that question. The notion of *steps* defines the possible increment per point. 
 
@@ -82,7 +81,7 @@ For each question, you'll need to define the question number, the total number o
 - For example, an answer to a **NEGATIVE** question on two points with a step of 4 will allow you to define comments that will remove points worth 0; -0.25; -0.5; ...; -1.75 or -2. Even if two negative comments result in a total score of less than 0, the score will be reduced to 0, the minimum value for the question. If no negative comments are applied, the student receives the maximum mark for this question, i.e. in our example 2. 
 - For example, for an answer to a **QCM** question, it will be necessary to give all valid answers. If the student's answer is valid, he/she will receive the maximum mark for the question. If the answer is not valid, he/she will for the moment have the penalty which is defined at the time of the scale as - 1/10; - 1/8; - 1/6; ...; -1/2; -1 or 0 * the maximum mark. If the student has left a blank, he will get 0 for the question. So if you set the number of points to 2, the penalty is 1/4. If the student got it right, he gets 2 points; if he got it wrong, he gets -0.5; if he didn't answer, he gets 0.
 
-### Step 3: Load scans of correctly ordered exam papers
+## Step 3: Load scans of correctly ordered exam papers
 
 The next step is to load the student copies into the application. We recommend using grayscale at 150 DPI to keep the file size reasonable, but there's no problem with a color scan at 300 DPI if necessary. Avoid pure black and white, which could interfere with the algorithm that recognizes students' names/first names/identifiers (INE) in the next step.
 
@@ -97,20 +96,20 @@ Use [pdfarranger](https://github.com/pdfarranger/pdfarranger). This is an excell
 Staple the student copies before the students compose. Ask them not to remove the staples. Use a paper cutter to remove staples before scanning your copies. 
 :::
 
-### Step 4. Straighten your scans
+## Step 4. Straighten your scans
 
 Now it's time to run the image alignment process to eliminate any distortion caused by scanning the copies. If you have marks (black circles) at the four corners of the copies, use alignment with mark, otherwise without mark it will take longer. If you don't have any MCQs and your scanner doesn't distort the copies very much, you can also choose not to straighten the copies. 
 
 You can ask to realign only part of the copies by selecting the pages to be realigned. This allows you to see in particular the point at which it has made its alignment. This is sometimes useful to understand why the alignment is going wrong. 
 
 
-### Step 5: Associate each copy with a student (AI-assisted)
+## Step 5: Associate each copy with a student (AI-assisted)
 
 The next step is to associate each copy with a student from the student list. It is possible to filter the students already assigned to a copy. 
 
 At the end of this stage, if you have correctly assigned all the copies, you can move on to the correction phase. If not, it's probably because a copy has not yet been assigned. 
 
-### Step 6: Correct copies (question by question or student by student or any other combination)
+## Step 6: Correct copies (question by question or student by student or any other combination)
 
 We now enter the correction phase. On the same or another piece of equipment (e.g. a tablet), you can correct copies (question by question or student by student). You can annotate the image with a pencil, add comments, set a grade, automatically correct MCQs, etc.
 
@@ -120,11 +119,11 @@ If you are correcting on a computer and not on a tablet, there are keyboard shor
 
 During this phase, it's a good idea to tag "excellent" answers and "outstanding" wrong answers. This automatically creates an answer sheet for the students, and allows these remarkable wrong answers to be discussed anonymously with the students later on.
 
-### Step 7: View the statistics associated with passing the exam to potentially adjust the grading slightly
+## Step 7: View the statistics associated with passing the exam to potentially adjust the grading slightly
 
 During or at the end of marking, you can view the statistics associated with this exam in the **see results** view, in order to adjust the grading, for example, by modifying the value associated with comments for **POSITIVE** or **NEGATIVE** grading. For **DIRECT** grading, it will not be possible to modify the grading after marking, and it will therefore be necessary to go through all the papers again if you wish to change the grading.
 
-### Step 8: Sending feedback to students
+## Step 8: Sending feedback to students
 
 Once the correction has been completed correctly, you can use the **see results** view to send copies to students. Students will receive a unique link to consult their copy, and will be able to view the answers tagged excellent anonymously. The sending e-mail can be configured just before sending. 
 
@@ -136,7 +135,7 @@ If you've graded your answers, they will not be graded on the online instance, b
 This stage of transmission to students is not compulsory. It's the tool's primary motivation, but the tool can just be used to evaluate without seeking to give systematic feedback to students. 
 :::
 
-### Step 9: Export grades in Excel format for transmission to school authorities
+## Step 9: Export grades in Excel format for transmission to school authorities
 
 Finally, it is possible to export grades in Excel format for transmission to school authorities. 
 
