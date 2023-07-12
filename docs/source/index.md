@@ -20,7 +20,7 @@
 
 This documentation describes: 
 
-- in the [use](user1) section, user documentation. 
+- in the [user manual](user1) section, the user documentation. 
 - in the [installation](installation) section, elements for compiling, installing and configuring the project
 - in the [developement](developer1) section, architectural elements to help you understand the project's structure and see how to contribute.
 
