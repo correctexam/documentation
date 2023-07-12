@@ -76,3 +76,4 @@ typing-extensions==4.3.0
     # via myst-parser
 urllib3==1.26.11
     # via requests
+sphinx-design==0.4.1

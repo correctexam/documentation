@@ -8,7 +8,7 @@ import sphinx_rtd_theme
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'correctexam'
-copyright = '2022, Barais Olivier'
+copyright = '2023, Univ Rennes'
 author = 'Barais Olivier'
 release = 'latest'
 
@@ -17,11 +17,25 @@ release = 'latest'
 
 #extensions = []
 extensions = ['myst_parser',
-    'sphinx_rtd_theme'
+    'sphinx_rtd_theme',
+    'sphinx.ext.duration',
+    'sphinx.ext.doctest',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.intersphinx',
+
 ]
 
-html_theme = "sphinx_rtd_theme"
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
+}
+intersphinx_disabled_domains = ['std']
+
 templates_path = ['_templates']
+
+myst_enable_extensions = ["colon_fence"]
+
 exclude_patterns = []
 
 
@@ -31,3 +45,11 @@ exclude_patterns = []
 
 #html_theme = 'alabaster'
 html_static_path = ['_static']
+
+
+# -- Options for HTML output
+
+html_theme = 'sphinx_rtd_theme'
+
+# -- Options for EPUB output
+epub_show_urls = 'footnote'

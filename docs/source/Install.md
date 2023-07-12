@@ -1,9 +1,65 @@
 
-# AMD64
 
-## Build
+(installation)=
+# Installation
 
-###  Backend
+
+## Rapid deployment on your own infrastructure
+
+### Can I quickly test this tool on my own machine?
+
+We provide [packaged releases](https://github.com/correctexam/corrigeExamBack/releases) to run on all three operating systems (windows, macos, linux) for AMD64 architecture with an integrated database. 
+
+Under linux and macos, just download the binary for your os, make it executable, launch the application and go to your browser at http://localhost:8080 (default user/user or admin/admin).
+
+Under Windows, you'll need to download the executable as well as the two *mydb...* files corresponding to the database. Place all three files in the same directory and run the executable.  Go to your browser at http://localhost:8080 (default user/user or admin/admin).
+
+:::{note}
+The project data can then be exported and imported into the online platform, for example if you wish to test sending e-mails to students to consult their copies.
+:::
+
+### Can I use the authentication service provided by the University or my school?
+
+The current version supports authentication behind a CAS. Quarkus can be easily configured to use another unified authentication system such as keycloak.
+
+### Can I test an instance of this application on my own infrastructure/laptop (I want to keep my data private) ?
+
+Yes please go to the documentation for developers. We provide scripts to deploy this application on any type of infrastructure from a powerful server with K8S to a raspberry 4. 
+
+You can also easily test it locally. You just need docker. 
+
+```bash
+git clone -b develop https://github.com/correctexam/corrigeExamBack
+cd corrigeExamBack/src/main/docker
+docker-compose -f app.yml build --no-cache  back front
+docker-compose -f app.yml up
+```
+
+the application is then available on [http://localhost:9000](http://localhost:9000)
+the phpmyadmin part is available on [http://localhost:91](http://localhost:91)
+the fake mail server part is available on [http://localhost:9000/maildev/](http://localhost:9000/maildev/)
+
+For information:
+
+1. If you want to connect to a real mail server type share. you can have an overview of the quarkus properties as a comment in the *app.yaml* file.
+
+2. If you want to change the ports
+  
+- for phpadmin,
+  - for the host port you have to change it in the *app.yml* file  
+  - for the internal port, you have to change it both in the *app.yml* file and the *myadmin.conf* file (nginx container file)
+- for the application
+  - for the host port, you have to change it in the app.yml.
+  - for the internal port, you have to change it in the app.yml and in the exam.conf file (file of the nginx container) for the front and update the quarkus properties if you want to change the internal port of the back (no real reason)
+
+1. If you want to set up reverse proxy according to a domain name, everything will happen in the files *exam.conf* and *myadmin.conf* but there is also to update the external url in the application, it's a quarkus property in the app.yml file. 
+
+
+## Build and deploy for AMD64
+
+### Build the platform
+
+####  Backend
 
 If you want to build it manually, you can just run the following command: 
 
@@ -29,13 +85,14 @@ docker build -f src/main/docker/Dockerfile.native -t barais/correctexam-back:man
 ```
 
 
-###  Front
+####  Front
 
 **Without docker**
 Just clone the project
 
+:::{attention}
 ⚠️ update webpack/environment.js with your domain name.
-
+:::
 
 ```bash
 # require nodejs v16 you can install it using nvm (https://github.com/nvm-sh/nvm)
@@ -53,9 +110,9 @@ npm run webapp:build:prod
 To build the front, we provide a simple docker file. 
 
 
-
+:::{attention}
 ⚠️ update webpack/environment.js with your domain name.
-
+:::
 
 ```bash
 git clone https://github.com/correctexam/corrigeExamFront
@@ -71,7 +128,7 @@ You will obtain a nginx with only the js, html and js. You have to mount the con
 
 
 
-## Deploy everything on your own infrastructure
+### Deploy everything on your own infrastructure
 
 
 
@@ -225,7 +282,7 @@ http {
 }
 ```
 
-## Or Deploy the database and the backend on your own infrastructure and the frontend on a CDN
+### Or Deploy the database and the backend on your own infrastructure and the frontend on a CDN
 
 If you want to deploy the database and the backend infrastrcture on your own infrastrcuture and deploy the frontend on the CDN. You must have to manage properly your CORS authorization within your CDN and withing your backend. If you use github page public site, Pages allows CORS (access-control-allow-origin header is set to *). For the backend, you can use the quarkus properties *-Dquarkus.http.cors=true -Dquarkus.http.cors.origins=https://correctexam.github.io -Dquarkus.http.cors.methods=GET,PUT,POST,DELETE,PATCH,OPTIONS* to manage your cors. Please update the docker-compose descriptor accordingly. 
 
@@ -261,10 +318,10 @@ services:
 
 Before building the frontend for your CDN, do not forget to update **webpack/environment.js** with your domain names. 
 
-#  Build and deploy on raspberry PI (arm64)
+##  Build and deploy on raspberry PI (arm64)
 
 
-##  Install support of cross compile on your machine
+###  Install support of cross compile on your machine
 
 
 ```bash 
@@ -273,9 +330,9 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes # This st
 docker run --rm -t arm64v8/ubuntu uname -m 
 ```
 
-##  Build
+###  Build
 
-### Build the backend
+#### Build the backend
 
 Create a docker file for quarkus to cross compile on your machine for arm64
 
@@ -332,7 +389,7 @@ CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
 docker build -f src/main/docker/Dockerfile.arm64 -t barais/correctexam-back:manifest-arm64v8 --build-arg ARCH=arm64v8/ .
 ```
 
-###  Build the frontend
+####  Build the frontend
 
 Clone the frontend repository. 
 
@@ -352,7 +409,7 @@ You will obtain a nginx with only the js, html and js. You have to mount the con
 
 
 
-## Deploy on your raspberry 4
+### Deploy on your raspberry 4
 
 You can push your built image on dockerhub (update docker image within the docker compose) and just deploy the docker compose on your own raspberry with the nginx configuration files.
 
@@ -508,7 +565,7 @@ http {
 }
 ```
 
-# Create a release on docker hub
+## Create a release on docker hub
 
 Next for the front you can use dockerX or create your docker image for the different targeted architecture. 
 
