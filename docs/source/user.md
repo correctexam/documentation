@@ -15,7 +15,6 @@ The main stages of exam marking are as follows
 8. Send feedback to students
 9. Export grades in excel format for transmission to school department
 
-## Demo
 
 A demonstration video is available [here](https://www.youtube.com/watch?v=bYTBlTg37RM&t) in French.
 
