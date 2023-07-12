@@ -8,6 +8,7 @@ A demonstration video is available [here](https://www.youtube.com/watch?v=bYTBlT
 ## The main stages to achieve to evaluate an exam
 
 The main stages of exam marking are as follows
+
 0. Create an account on the platform ?
 1. Create a course and an exam (this includes creating your exam using a word processor (word, google doc, libreoffice) or latex ;) and upload the list of students who can take the exam.
 2. Create your marking scheme (how each question will be graded, typical comments per question, ...)
