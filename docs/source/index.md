@@ -1,6 +1,6 @@
 # Welcome to the CorrectExam documentation
 
-A [French 🇫🇷](https://correctexam.readthedocs.io/fr/latest/) version is also avilable.
+A [French 🇫🇷](https://correctexam.readthedocs.io/fr/latest/) version is also available.
 
 [**CorrectExam**](https://correctexam.github.io/) is a tool to help with the correction of paper copies. Its primary aim is to enable students to receive quickly, more detailed feedback on their work, and teachers to see detailed analyses of assignments and questions. It's a simple way of saving work in digital form, preserving the original work and enabling quick and easy viewing from anywhere.
 

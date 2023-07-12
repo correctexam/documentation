@@ -5,7 +5,6 @@
 
 A demonstration video is available [here](https://www.youtube.com/watch?v=bYTBlTg37RM&t) in French.
 
-
 ## How to create an account on the platform?
 
 You can go to the [platform](https://correctexam.github.io/corrigeExamFront/), click on **register**, fill in some information. You will receive an email to validate your account. 
