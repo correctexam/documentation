@@ -224,7 +224,7 @@ We recommend using grayscale at 150 DPI to keep the file size reasonable but no 
 
 
 
-## Can I compose a statement with another tool than word, excel or latex?
+## Can I compose an exam template with another tool than word, libraoffice or latex?
 
 Of course, the only important point is a circle marker in the corners to facilitate alignment and light gray squares to put the names, first names and ids (INE) of students. 
 
