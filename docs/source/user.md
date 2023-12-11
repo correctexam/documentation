@@ -194,22 +194,31 @@ No, it will be marked as ABI by default.
 
 ## Can you explain the different types of questions that are available?
 
-For the moment, there are roughly four types of questions. 
+For the moment, there are roughly five types of questions. 
 
 - **MCQs** for which the application provides marking assistance. 
 - The **DIRECT** scoring (*Manual and Direct*) for which the teacher manually scores the answers to this question. 
 - **POSITIVE** scoring (*Manual and POSITIVE*). This remains an element for which the teacher can define a set of comments along the way that gives points to the answers for this question (we start from zero). The total number of points obtained cannot exceed the maximum number of points associated with this question.
 - The **NEGATIVE** notation (*Manual and NEGATIVE*). This is an element for which the corrector can define a set of comments along the way that removes points from the answer in question (we start from the maximum number of points possible for this question). The total number of points obtained cannot go below zero.
-
+- The **HYBRID** notation (*Manual and HYBRID*). This is an item for which the marker can define a set of comments along the way which subtracts points from or subtracts points from the answer in question (we start from a default number of points defined by the marker as a percentage of the maximum mark for this question, and we add or substitute points associated with comments either absolutely or relatively to the maximum mark for the question). The total number of points obtained cannot be less than zero or more than the maximum number of points for that question. The big advantage of this type of question is that it makes it easy to update the scale during marking. Eventually, this type of question should be the default.
+- 
 These types of questions will be enriched in the future. Please provide your great idea. 
 
 ## Can I change the type of question when the correction of a question has started?
 
 Honestly, not recommended because not tested. 
 
+## Can I update my exam's scale?
+
+This depends largely on the type of question. 
+- For questions of the **DIRECT** type. This is not recommended. If you change the scale, it is necessary to go back over all the students' papers for this question. 
+- For questions of type **POSITIVE** and **NEGATIVE**, you can update the scale of comments, add or remove comments. It is not recommended to update the number of points for a given question. 
+- For questions of type **QCM**, you can update the number of negative points to be withdrawn without restarting the automatic correction; if you change any other type of information, it will be necessary to restart the automatic correction for this question. 
+- For HYBRID questions, this is designed accordingly. All modifications are authorized. **.
+
 ## How to clean the students' scan if pages are missing, duplicate page, flipped page...?
 
-Use [pdfarranger](https://github.com/pdfarranger/pdfarranger). It is great tool for this task. 
+Use [pdfarranger](https://github.com/pdfarranger/pdfarranger) or [Stirling-PDF](https://github.com/Frooodle/Stirling-PDF). They are  great tools for this task. 
 
 ## Can I reload a clean scan (see previous question) and realign it if I already start to correct an exam?
 
@@ -217,7 +226,7 @@ Yes, no problem, if you share the correction with colleagues or with different d
 
 ## What happens if my template has an odd number of pages (*e.g.* 3 pages) and the scan of the student sheets is a multiple of 2 (*e.g.* 4 page per student)
 
-For the moment, it is not managed correctly at the moment of the alignment. It will be necessary to remove the blank pages from the student scans beforehand with pdf manipulation tools like [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) or [pdfarranger](https://github.com/pdfarranger/pdfarranger).
+For the moment, it is not managed correctly at the moment of the alignment. It will be necessary to remove the blank pages from the student scans beforehand with pdf manipulation tools like [pdftk](https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/) or [pdfarranger](https://github.com/pdfarranger/pdfarranger) or [Stirling-PDF](https://github.com/Frooodle/Stirling-PDF).
 
 
 ## How do I scan students' sheets?
