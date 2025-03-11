@@ -197,10 +197,11 @@ No, it will be marked as ABI by default.
 For the moment, there are roughly five types of questions. 
 
 - **MCQs** for which the application provides marking assistance. 
-- The **DIRECT** scoring (*Manual and Direct*) for which the teacher manually scores the answers to this question. 
-- **POSITIVE** scoring (*Manual and POSITIVE*). This remains an element for which the teacher can define a set of comments along the way that gives points to the answers for this question (we start from zero). The total number of points obtained cannot exceed the maximum number of points associated with this question.
-- The **NEGATIVE** notation (*Manual and NEGATIVE*). This is an element for which the corrector can define a set of comments along the way that removes points from the answer in question (we start from the maximum number of points possible for this question). The total number of points obtained cannot go below zero.
-- The **HYBRID** notation (*Manual and HYBRID*). This is an item for which the marker can define a set of comments along the way which subtracts points from or subtracts points from the answer in question (we start from a default number of points defined by the marker as a percentage of the maximum mark for this question, and we add or substitute points associated with comments either absolutely or relatively to the maximum mark for the question). The total number of points obtained cannot be less than zero or more than the maximum number of points for that question. The big advantage of this type of question is that it makes it easy to update the scale during marking. Eventually, this type of question should be the default.
+- **MANUSCRIPT**, for which the application provides a handwriting recognition mechanism that allows the responses to be grouped according to the textual content of the response for batch evaluation. 
+- The **DIRECT** scoring (*Manual/Manuscript and Direct*) for which the teacher manually scores the answers to this question. 
+- **POSITIVE** scoring (*Manual/Manuscript and POSITIVE*). This remains an element for which the teacher can define a set of comments along the way that gives points to the answers for this question (we start from zero). The total number of points obtained cannot exceed the maximum number of points associated with this question.
+- The **NEGATIVE** notation (*Manual/Manuscript and NEGATIVE*). This is an element for which the corrector can define a set of comments along the way that removes points from the answer in question (we start from the maximum number of points possible for this question). The total number of points obtained cannot go below zero.
+- The **HYBRID** notation (*Manual/Manuscript and HYBRID*). This is an item for which the marker can define a set of comments along the way which subtracts points from or subtracts points from the answer in question (we start from a default number of points defined by the marker as a percentage of the maximum mark for this question, and we add or substitute points associated with comments either absolutely or relatively to the maximum mark for the question). The total number of points obtained cannot be less than zero or more than the maximum number of points for that question. The big advantage of this type of question is that it makes it easy to update the scale during marking. Eventually, this type of question should be the default.
 - 
 These types of questions will be enriched in the future. Please provide your great idea. 
 
@@ -233,13 +234,11 @@ For the moment, it is not managed correctly at the moment of the alignment. It w
 
 We recommend using grayscale at 150 DPI to keep the file size reasonable but no problem with a color scan at 300 DPI if necessary. Avoid pure black and white which could be detrimental to the algo that recognizes names/first names/ids (INE) of students
 
-
-
 ## Can I compose an exam template with another tool than word, libraoffice or latex?
 
 Of course, the only important point is a circle marker in the corners to facilitate alignment and light gray squares to put the names, first names and ids (INE) of students. 
 
-## What to do when I encounter a bug in the application?
+## What to do when I discover a bug in the application?
 
 Use the github ticket system on the project https://github.com/correctexam/corrigeExamFront
 
@@ -261,6 +260,6 @@ The project data can then be exported and imported into the online platform, for
 
 Yes, at any time. We advise you to make a backup (course by course) if you ever wish to reupload certain data. When you destroy your data, no backup is kept, so we cannot restore the data. 
 
-## What guarantees do I have that I won't lose data in the event of a problem on the platform? 
+## Which guarantees do I have that I won't lose data in the event of a problem on the platform? 
 
 For the time being, the [online platform](https://correctexam.github.io/corrigeExamFront/) is offered in *best effort* mode on a server of the University of Rennes. No data guarantee is provided. Please contact your school's IT department if you require a higher level of guarantee.
